@@ -3,14 +3,9 @@ resource "aws_vpc_peering_connection" "name" {
   
   peer_vpc_id = local.default_vpc_id
   vpc_id = aws_vpc.main.id
-    auto_accept = true
+    
 
     
-  lifecycle {
-    create_before_destroy = true
-    ignore_changes = [destination_cidr_block]
-  }
-
     tags = merge (
         var.common_tags,
         var.vpc_peering_tags,
